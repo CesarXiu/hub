@@ -4,11 +4,19 @@ import Footer from "@/interfaces/footer";
 
 interface MainFooterProps {
     Footers: Array<Footer>;
+    Absolute?: boolean;
 }
 
-export default function MainFooter({ Footers }: MainFooterProps) {
+export default function MainFooter({ Footers, Absolute }: MainFooterProps) {
+    if (Absolute && window.innerWidth <= 640) {
+        Absolute = false;
+    }
     return (
-        <footer className="row-start-3 flex flex-wrap items-center justify-center">
+        <footer
+        className={`row-start-3 flex flex-wrap items-center justify-center ${
+            Absolute ? "absolute bottom-0 w-full" : ""
+          }`}
+        >
             {Footers.map((footer: Footer, index: number) => {
                 return (
                     <a

@@ -30,7 +30,7 @@ export default function Hub() {
         {
             "nombre": "SIGA",
             "url" : "/SIGA_CLI",
-            "descripcion" : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Earum exercitationem, quae illum neque quod iure, non error nostrum nesciunt tenetur amet reprehenderit dolor. Animi nostrum voluptatibus minus saepe velit commodi. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Earum exercitationem, quae illum neque quod iure, non error nostrum nesciunt tenetur amet reprehenderit dolor. Animi nostrum voluptatibus minus saepe velit commodi.",
+            "descripcion" : "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
             "icono" : "residenciasMapache.svg"
         },
     ];

@@ -3,15 +3,25 @@ import Pagina from "@/interfaces/paginas";
 import Image from "next/image";
 import { paginated, pages } from "@/utils/paginatedUtil";
 import Paginated from "@/components/Paginated";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 export default function Pages(paginas: Array<Pagina>) {
   const itemsPerPage = 3;
   const itemsTotal = paginas.length;
   const paginatedPages: Array<Array<Pagina>> = paginated(paginas, itemsPerPage);
-  const [currentPage, setCurrentPage] = useState(1);
-  const imageSizeOnPhone = 50;
-  const imageSizeOnOthers = 125;
-  const imageSize = window.innerWidth < 640 ? imageSizeOnPhone : imageSizeOnOthers;
+  const [currentPage, setCurrentPage] = useState(0);
+  const [imageSize, setImageSize] = useState(125);
+  useEffect(() => {
+    const handleResize = () => {
+      setImageSize(window.innerWidth < 640 ? 50 : 125);
+    };
+
+    handleResize(); // Set initial size
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
     <div>
       <hr/>
@@ -53,7 +63,7 @@ export default function Pages(paginas: Array<Pagina>) {
         pages={pages}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
-      />
+      /> 
     </div>
   );
 }

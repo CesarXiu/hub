@@ -3,7 +3,7 @@ interface PaginatedProps {
   itemsTotal: number;
   currentPage: number;
   pages: number;
-  setCurrentPage: (number) => void;
+  setCurrentPage: (i:number) => void;
 }
 export default function Paginated({
   itemsPerPage,

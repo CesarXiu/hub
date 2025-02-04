@@ -13,7 +13,7 @@ export default function Home() {
     }
   ];
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 gap-16 font-[family-name:var(--font-geist-sans)]">
+    <div className="items-center justify-items-center min-h-screen font-[family-name:var(--font-geist-sans)]">
       <h1 className="text-3xl font-bold text-center text-white mt-8 font-sans sm:text-4xl">BIENVENIDO AL LOBBY DE SERVICIOS WEB DEL ITCHETUMAL</h1>
       <main className="w-full pl-6 pr-6 overflow-hidden">
         <Hub/>

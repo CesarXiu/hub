@@ -62,7 +62,7 @@ export default function Pages(paginas: Array<Pagina>) {
                 </div>
                 {typeof window !== "undefined" && (
                   <Image
-                    src={"/" + pagina.icono}
+                    src={pagina.icono}
                     alt="icono"
                     width={imageSize}
                     height={imageSize}

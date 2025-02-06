@@ -5,7 +5,7 @@ import { paginated, pages } from "@/utils/paginatedUtil";
 import Paginated from "@/components/Paginated";
 import { useState, useEffect } from "react";
 export default function Pages(paginas: Array<Pagina>) {
-  const serverUrl = process.env.SERVER_URL;
+  const serverUrl = process.env.NEXT_PUBLIC_SERVER_URL;
   const itemsPerPage = 3;
   const itemsTotal = paginas.length;
   const paginatedPages: Array<Array<Pagina>> = paginated(paginas, itemsPerPage);

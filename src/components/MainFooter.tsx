@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import Footer from "@/interfaces/footer";
+import { useState, useEffect } from "react";
 
 interface MainFooterProps {
     Footers: Array<Footer>;
@@ -8,13 +9,16 @@ interface MainFooterProps {
 }
 
 export default function MainFooter({ Footers, Absolute }: MainFooterProps) {
-    if (Absolute && window.innerWidth <= 640) {
-        Absolute = false;
-    }
+    const [isAbsolute, setIsAbsolute] = useState(Absolute || false);
+    useEffect(() => {
+        if (Absolute && typeof window !== "undefined") {
+            setIsAbsolute(window.innerWidth > 640 ? Absolute : false);
+        }
+    }, [Absolute]);
     return (
         <footer
         className={`row-start-3 flex flex-wrap items-center justify-center ${
-            Absolute ? "absolute bottom-0 w-full" : ""
+            isAbsolute ? "absolute bottom-0 w-full" : ""
           }`}
         >
             {Footers.map((footer: Footer, index: number) => {

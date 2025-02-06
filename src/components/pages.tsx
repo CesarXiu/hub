@@ -12,16 +12,28 @@ export default function Pages(paginas: Array<Pagina>) {
   const [imageSize, setImageSize] = useState(125);
   useEffect(() => {
     const handleResize = () => {
-      setImageSize(window.innerWidth < 640 ? 50 : 125);
+      if (typeof window !== 'undefined') {
+        setImageSize(window.innerWidth < 640 ? 50 : 125);
+      }
     };
 
     handleResize(); // Set initial size
-    window.addEventListener("resize", handleResize);
+    if (typeof window !== 'undefined') {
+      window.addEventListener("resize", handleResize);
+    }
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      if (typeof window !== 'undefined') {
+        window.removeEventListener("resize", handleResize);
+      }
     };
   }, []);
+
+  const handleClick = (url: string) => {
+    if (typeof window !== 'undefined') {
+      window.location.href = url;
+    }
+  };
   return (
     <div>
       <hr/>
@@ -31,7 +43,9 @@ export default function Pages(paginas: Array<Pagina>) {
             <li
               key={index}
               className="items-center justify-between p-4 my-2 bg-white shadow-md rounded-md cursor-pointer hover:bg-sky-200 max-h-[160px] "
-              onClick={() => (window.location.href = pagina.url)}
+              onClick={() => (
+                handleClick(pagina.url)
+              )}
             >
               <div className="grid grid-flow-col justify-between gap-4">
                 <div
@@ -45,13 +59,15 @@ export default function Pages(paginas: Array<Pagina>) {
                     {pagina.descripcion}
                   </p>
                 </div>
-                <Image
-                  src={"/" + pagina.icono}
-                  alt="icono"
-                  width={imageSize /*125*/}
-                  height={imageSize /*125*/}
-                  className="rounded-xl"
-                />
+                {typeof window !== "undefined" && (
+                  <Image
+                    src={"/" + pagina.icono}
+                    alt="icono"
+                    width={imageSize}
+                    height={imageSize}
+                    className="rounded-xl"
+                  />
+                )}
               </div>
             </li>
           );

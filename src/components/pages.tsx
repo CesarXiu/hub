@@ -5,6 +5,7 @@ import { paginated, pages } from "@/utils/paginatedUtil";
 import Paginated from "@/components/Paginated";
 import { useState, useEffect } from "react";
 export default function Pages(paginas: Array<Pagina>) {
+  const serverUrl = process.env.SERVER_URL;
   const itemsPerPage = 3;
   const itemsTotal = paginas.length;
   const paginatedPages: Array<Array<Pagina>> = paginated(paginas, itemsPerPage);
@@ -44,7 +45,7 @@ export default function Pages(paginas: Array<Pagina>) {
               key={index}
               className="items-center justify-between p-4 my-2 bg-white shadow-md rounded-md cursor-pointer hover:bg-sky-200 max-h-[160px] "
               onClick={() => (
-                handleClick(pagina.url)
+                handleClick(serverUrl+pagina.url)
               )}
             >
               <div className="grid grid-flow-col justify-between gap-4">

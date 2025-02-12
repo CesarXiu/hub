@@ -12,7 +12,7 @@ export default function Hub() {
         },
         {
             "nombre": "Sistema Integral de Residencias Profesionales (Alumnos)",
-            "url" : "ResidenciasFront",
+            "url" : "ResidenciasFrontEnd",
             "descripcion" : "Es una plataforma diseñada para que los estudiantes se postulen a proyectos, soliciten su residencia profesional y gestionen todo el proceso de manera eficiente. Permite subir su anteproyecto, descargar documentación clave como la solicitud de residencia, anexos (evaluación de seguimiento y reporte final), y facilita su evaluación final en el sistema de servicios escolares.",
             "icono" : "residenciasMapache.svg"
         },
